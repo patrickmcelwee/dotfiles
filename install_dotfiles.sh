@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dir=~/.files
-olddir=~/.files_old
+dir=~/dotfiles
+olddir=~/dotfiles_old
 files="bashrc bash_profile profile tmux.conf gitconfig"
 linkeddirs="scripts"
 
