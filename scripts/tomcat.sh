@@ -18,4 +18,14 @@ case "$1" in
     ;;
   "status" )
     ps aux | grep [j]ava
+    ;;
+  "tail" )
+    tail -f $CATALINA_HOME/logs/catalina.out
+    ;;
+  "log" )
+    vim $CATALINA_HOME/logs/catalina.out
+    ;;
+  "dir" )
+    echo "changing to dir $CATALINA_HOME"
+    cd $CATALINA_HOME
 esac
