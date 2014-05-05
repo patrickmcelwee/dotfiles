@@ -28,22 +28,21 @@ for file in $files; do
 done
 
 for linkeddir in $linkeddirs; do
+  if [ -h ~/."$linkeddir" ]; then
+    echo "Removing symlink ~/.$linkeddir"
+    rm ~/."$linkeddir"
+  fi
   if [ -d ~/."$linkeddir" ]; then
-    if [ ! -h ~/."$linkeddir" ]; then
-      FILES=~/."$linkeddir"/*
-      mkdir -p $olddir/.$linkeddir
-      for file in $FILES; do
-        if [ -f $file ] && [ ! -h $file ]; then
-          echo "Moving $file from ~ to $olddir/.$linkeddir/"
-          mv $file $olddir/."$linkeddir"
-        fi
-      done
-      echo "Removing directory ~/.$linkeddir"
-      rm -r ~/."$linkeddir"
-    else
-      echo "Removing symlink ~/.$linkeddir"
-      rm ~/."$linkeddir"
-    fi
+    FILES=~/."$linkeddir"/*
+    mkdir -p $olddir/.$linkeddir
+    for file in $FILES; do
+      if [ -f $file ] && [ ! -h $file ]; then
+        echo "Moving $file from ~ to $olddir/.$linkeddir/"
+        mv $file $olddir/."$linkeddir"
+      fi
+    done
+    echo "Removing directory ~/.$linkeddir"
+    rm -r ~/."$linkeddir"
   fi
   echo "Creating symlink to directory $linkeddir in home directory"
   ln -s $dir/$linkeddir ~/.$linkeddir
