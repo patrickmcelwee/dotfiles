@@ -2,7 +2,7 @@ set nocompatible
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-set relativenumber
+silent! set relativenumber
 filetype off
 
 let g:blockle_mapping = '<Leader>ed'
@@ -289,7 +289,7 @@ set visualbell
 set shortmess=AI " Do not warn of existing swap file or show intro
 set matchpairs+=<:> " % jumps between carets
 "Display a visual barrier for col 80
-set colorcolumn=80
+silent! set colorcolumn=80
 "Use confirm instead of aborting an action
 set confirm
 "Always have lines of context above or below current line
@@ -372,9 +372,9 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 autocmd FocusLost * :set number
-autocmd FocusGained * :set relativenumber
+autocmd FocusGained * silent! :set relativenumber
 autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+autocmd InsertLeave * silent! :set relativenumber
 
 "git
 map <Leader>gr :Gread<CR>:w<CR>:Gstatus<CR>
