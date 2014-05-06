@@ -2,7 +2,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bashrc bash_profile profile tmux.conf gitconfig"
+files="bashrc bash_profile profile tmux.conf gitconfig vimrc"
 linkeddirs="scripts"
 
 echo "Creating $olddir for backup for existing dotfiles in ~"
@@ -14,14 +14,13 @@ cd $dir
 echo "...done"
 
 for file in $files; do
-  if [ -f ~/.$file ] ; then
-    if [ ! -h ~/.$file ]; then
-      echo "Moving ~/.$file from ~ to $olddir"
-      mv ~/.$file $olddir
-    else
-      echo "Removing existing symlink ~/.$file"
-      rm ~/.$file
-    fi
+  if [ -h ~/.$file ]; then
+    echo "Removing existing symlink ~/.$file"
+    rm ~/.$file
+  fi
+  if [ -f ~/.$file ]; then
+    echo "Moving ~/.$file from ~ to $olddir"
+    mv ~/.$file $olddir
   fi
   echo "Creating symlink to $file in home directory."
   ln -s $dir/$file ~/.$file
