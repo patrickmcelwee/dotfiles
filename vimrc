@@ -53,20 +53,20 @@ colorscheme solarized
 " Vivo_Admin
 " When in a resource, open its map
 map <Leader>mp :e app/maps/%:t:r_map.rb<CR>
-  " When in a map, open its resource
-  map <Leader>rs :e lib/duke_vivo_mapper/resources/%:t:r:s/_map//.rb<CR>
-  map <Leader>gdm :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/maps<CR>
-  map <Leader>gdr :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/resources<CR>
-  map <Leader>gds :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/sources<CR>
-  map <Leader>gdd :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/models<CR>
+" When in a map, open its resource
+map <Leader>rs :e lib/duke_vivo_mapper/resources/%:t:r:s/_map//.rb<CR>
 
-  " Code to create a new data loader
-  map <leader>d a<space>Rails.configuration.data_loader_factory.create_data_loader<Esc>
-  map <leader>es aexpect(subject.)<Esc>==g_i
+" Code to create a new data loader
+map <leader>d a<space>Rails.configuration.data_loader_factory.create_data_loader<Esc>
+map <leader>es aexpect(subject.)<Esc>==g_i
 
-" Command T
-map <Leader>f :CommandT <CR>
-map <Leader>gv :CommandTFlush<CR>\|:CommandT app/views<cr>
+" Ctrl-P
+map <Leader>f :CtrlP <CR>
+let g:ctrlp_show_hidden = 1
+"map <Leader>gdm :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/maps<CR>
+"map <Leader>gdr :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/resources<CR>
+"map <Leader>gds :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/sources<CR>
+"map <Leader>gdd :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/models<CR>
 
 map <Leader>jc :!javac % <CR>
 map <Leader>nd :NERDTreeToggle<CR>
