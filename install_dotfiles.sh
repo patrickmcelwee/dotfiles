@@ -35,7 +35,7 @@ for linkeddir in $linkeddirs; do
     FILES=~/."$linkeddir"/*
     mkdir -p $olddir/.$linkeddir
     for file in $FILES; do
-      if [ -f $file ] && [ ! -h $file ]; then
+      if [ -f $file ]; then
         echo "Moving $file from ~ to $olddir/.$linkeddir/"
         mv $file $olddir/."$linkeddir"
       fi
@@ -46,3 +46,14 @@ for linkeddir in $linkeddirs; do
   echo "Creating symlink to directory $linkeddir in home directory"
   ln -s $dir/$linkeddir ~/.$linkeddir
 done
+
+echo "Setting up Vundle for vim..."
+[ -d ~/.vim/bundle ] || mkdir ~/.vim/bundle
+if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+  echo "...cloning down Vundle"
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+echo "...done"
+
+echo "Setting up ~/.vim_backups"
+[ -d ~/.vim_backups ] || mkdir ~/.vim_backups
