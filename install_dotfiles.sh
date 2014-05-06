@@ -3,7 +3,7 @@
 dir=~/dotfiles
 olddir=~/dotfiles_old
 files="bashrc bash_profile profile tmux.conf gitconfig vimrc"
-linkeddirs="scripts"
+linkeddirs="scripts vim"
 
 echo "Creating $olddir for backup for existing dotfiles in ~"
 mkdir -p $olddir
