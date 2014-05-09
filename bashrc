@@ -25,7 +25,11 @@ alias emacs='/usr/local/Cellar/emacs/24.3/bin/emacs'
 # :-)
 alias mirror='/Applications/Photo\ Booth.app/Contents/MacOS/Photo\ Booth'
 
-export EDITOR='/usr/local/Cellar/macvim/*/MacVim.app/Contents/MacOS/Vim'
+if [ -d /usr/local/Cellar/macvim ]; then
+  export EDITOR='/usr/local/Cellar/macvim/*/MacVim.app/Contents/MacOS/Vim'
+else
+  export EDITOR='vim'
+fi
 # pass through C-s to vim
 vim()
 {
@@ -55,13 +59,11 @@ fi
 export CPPFLAGS=-I/opt/X11/include
 export JVM_OPTS='-Djava.awt.headless=true'
 export JRUBY_OPTS='--1.9 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -J-Djava.awt.headless=true'
-# Force java to run 32-bit client rather than 64-bit server
-# to speed up JRuby start-up
-export JAVA_OPTS="-d32 -client -Djava.awt.headless=true"
+export JAVA_OPTS="-client -Djava.awt.headless=true"
 
 # git autocomplete branches
-if [ -f ~/.scripts/.git-completion.bash ]; then
-  . ~/.scripts/.git-completion.bash
+if [ -f ~/.scripts/git-completion.bash ]; then
+  . ~/.scripts/git-completion.bash
 fi
 
 # ads sub command (https://github.com/37signals/sub)
