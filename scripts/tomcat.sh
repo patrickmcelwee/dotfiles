@@ -26,6 +26,6 @@ case "$1" in
     vim $CATALINA_HOME/logs/catalina.out
     ;;
   "dir" )
-    echo "changing to dir $CATALINA_HOME"
+    echo "$CATALINA_HOME"
     cd $CATALINA_HOME
 esac
