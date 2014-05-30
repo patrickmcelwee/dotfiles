@@ -1,3 +1,7 @@
+if [ -f ~/.custom_bash_profile ]; then
+  source ~/.custom_bash_profile
+fi
+
 HISTFILESIZE=5000
 
 alias vb='vim ~/.bashrc'
