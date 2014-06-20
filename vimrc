@@ -280,7 +280,7 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
   " Indent p tags
-  autocmd FileType eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
+  "autocmd FileType eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 augroup END
 
 " Paste toggle
