@@ -335,6 +335,7 @@ nnoremap <Leader>pit "xyiwoputs ": #{.inspect}"<esc>F:"xPf{"xp
 vmap <Leader>pt "xyoputs ": #{}"<esc>F:"xPf{"xp
 "log to java in cljs
 nmap <Leader>jc "lyiwo(.log js/console <Esc>"lp
+vmap <Leader>jc "lyo(.log js/console <Esc>"lp
 
 "Refactoring (based on ecomba)
 " convert symbol to key of hash
@@ -405,6 +406,8 @@ autocmd FileType clojure,lisp let b:AutoClosePairs = AutoClose#ParsePairs("() []
 nmap <Leader>dc "vyiw :call VimuxRunCommand("(doc " . @v . ")\n", 0)<CR>
 "vmap <Leader>vt "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
 "map <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
+"Remove a layer of parentheses, leaving only last item
+nmap <Leader>rp ds)dt(
 
 "au BufNewFile,BufRead *.quicktask set filetype=quicktask
 
