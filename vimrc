@@ -193,6 +193,20 @@ function! RenameFile()
 endfunction
 nmap <leader>rn :call RenameFile()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EXTRACT METHOD
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ExtractMethod()
+  normal! md
+  let method_name = input('Method name: ')
+  execute ":normal `da" . method_name
+  execute ":normal G?def\<cr>%o\<cr>def " . method_name
+  normal! oend
+  normal! O
+  normal! p==
+endfunction
+nmap <Leader>em vg_d:call ExtractMethod()<CR>
+vmap <leader>em d:call ExtractMethod()<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PROMOTE VARIABLE TO RSPEC LET
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! PromoteToLet()
