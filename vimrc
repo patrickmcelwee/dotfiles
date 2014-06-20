@@ -36,6 +36,7 @@ Bundle  'aaronbieber/quicktask'
 Bundle  'derekwyatt/vim-scala'
 Bundle  'digitaltoad/vim-jade'
 Bundle  'amdt/vim-niji'
+Bundle  'sjl/gundo.vim'
 
 call vundle#end()
 filetype on
@@ -397,3 +398,6 @@ nmap <Leader>dc "vyiw :call VimuxRunCommand("(doc " . @v . ")\n", 0)<CR>
 "link
 nmap <Leader>lk ysiw]f]a(
 vmap <Leader>lk S]f]a(
+
+"Gundo
+nnoremap <Leader>gu :GundoToggle<CR>
