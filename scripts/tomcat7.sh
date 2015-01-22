@@ -1,12 +1,5 @@
 #!/bin/sh
-if [ -d '/usr/local/Cellar/tomcat/6.0.26' ]; then
-  export CATALINA_HOME=/usr/local/Cellar/tomcat/6.0.26/libexec
-elif [ -d '/usr/local/Cellar/tomcat/7.0.54' ]; then
-  export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.53/libexec
-else
-  echo "ERROR: Could not locate tomcat in /usr/local/Cellar/"
-  echo "--> Script currently only supports 6.0.26 and 7.0.54"
-fi
+export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.54/libexec
 
 case "$1" in
   "start" )

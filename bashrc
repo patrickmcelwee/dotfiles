@@ -16,15 +16,13 @@ alias pg='ps aux | grep'
 alias hsg='history | grep'
 alias start-mysql='sudo /usr/local/mysql/bin/mysqld_safe'
 alias tomcat='sh ~/.scripts/tomcat.sh'
+alias tomcat7='sh ~/.scripts/tomcat7.sh'
 alias torqueboxrun='jruby -S torquebox run -J "\-Xmx1024m \-XX:MaxPermSize=528m"'
 
 alias g='git'
 
 alias cdd='bundle exec cap development deploy'
 alias cad='bundle exec cap acceptance deploy'
-
-alias vim='/usr/local/Cellar/macvim/*/MacVim.app/Contents/MacOS/Vim'
-alias emacs='/usr/local/Cellar/emacs/24.3/bin/emacs'
 
 # :-)
 alias mirror='/Applications/Photo\ Booth.app/Contents/MacOS/Photo\ Booth'
@@ -62,7 +60,7 @@ fi
 
 export CPPFLAGS=-I/opt/X11/include
 export JVM_OPTS='-Djava.awt.headless=true'
-export JRUBY_OPTS='--1.9 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -J-Djava.awt.headless=true'
+export JRUBY_OPTS='-J-XX:MaxPermSize=112m --1.9 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -J-Djava.awt.headless=true'
 export JAVA_OPTS="-client -Djava.awt.headless=true"
 
 # git autocomplete branches
