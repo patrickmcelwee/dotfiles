@@ -37,6 +37,7 @@ Bundle  'derekwyatt/vim-scala'
 Bundle  'digitaltoad/vim-jade'
 Bundle  'amdt/vim-niji'
 Bundle  'sjl/gundo.vim'
+Bundle  'niklasl/vim-rdf'
 
 call vundle#end()
 filetype on
@@ -49,46 +50,47 @@ imap jk <Esc>
 let mapleader=" "
 syntax on
 set tags+=gems.tags
-nmap K -J
-nmap <Leader>w :w<CR>
+nnoremap K -J
+nnoremap <Leader>w :w<CR>
 
 set background=dark
 colorscheme solarized
 
 " Vivo_Admin
 " When in a resource, open its map
-nmap <Leader>mp :e app/maps/%:t:r_map.rb<CR>
+nnoremap <Leader>mp :e app/maps/%:t:r_map.rb<CR>
 " When in a map, open its resource
-nmap <Leader>rs :e lib/duke_vivo_mapper/resources/%:t:r:s/_map//.rb<CR>
+nnoremap <Leader>rs :e lib/duke_vivo_mapper/resources/%:t:r:s/_map//.rb<CR>
 
 " Code to create a new data loader
-nmap <leader>dl a<space>Rails.configuration.data_loader_factory.create_data_loader<Esc>
-nmap <leader>es aexpect(subject.)<Esc>==g_i
+nnoremap <leader>dl a<space>Rails.configuration.data_loader_factory.create_data_loader<Esc>
+nnoremap <leader>es aexpect(subject.)<Esc>==g_i
 
 " Ctrl-P
-nmap <Leader>f :CtrlP <CR>
-nmap <Leader>b :CtrlPBuffer <CR>
+nnoremap <Leader>f :CtrlP <CR>
+nnoremap <Leader>b :CtrlPBuffer <CR>
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<c-f>'] }
 "exclude source and compiled files (put in target/ by scala)
-let g:ctrlp_custom_ignore = '\v/(\.git|target|out|classes|gen)$'
+let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log)$'
 "map <Leader>gdm :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/maps<CR>
 "map <Leader>gdr :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/resources<CR>
 "map <Leader>gds :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/sources<CR>
 "map <Leader>gdd :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/models<CR>
 
-nmap <Leader>jc :!javac % <CR>
-nmap <Leader>nd :NERDTreeToggle<CR>
+nnoremap <Leader>jc :!javac % <CR>
+nnoremap <Leader>nd :NERDTreeToggle<CR>
+let g:user_emmet_leader_key='<C-Q>'
 
 " Lazy save 
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 
 " Switch to last window
-nmap <Leader><Leader> <C-^>
+nnoremap <Leader><Leader> <C-^>
 
 "Open this rc file
-nmap <Leader>rc :e ~/.vimrc<CR>
+nnoremap <Leader>rc :e ~/.vimrc<CR>
 
 "Move between windows
 nnoremap <C-j> <C-w>j
@@ -100,68 +102,68 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 "Create directory for current open file
-nmap <Leader>md :!mkdir -p %:h<CR>
+nnoremap <Leader>md :!mkdir -p %:h<CR>
 
 "Vimux
 " If text is selected, save it in v buffer and send to tmux
-vmap <Leader>vt "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
+vnoremap <Leader>vt "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
 " Select current paragraph and send it to tmux
-nmap <Leader>vt vip<Leader>vt
-nmap <Leader>vv V<Leader>vt
+nnoremap <Leader>vt vip<Leader>vt
+nnoremap <Leader>vv V<Leader>vt
 
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "23"
 let VimuxUseNearestPane = 1
 
 " Run the current file with rspec, excluding js specs
-nmap <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
+nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
 " Run the current spec with rspec, including js specs
-nmap <Leader>vjs :call VimuxRunCommand("bundle exec rspec " . bufname("%"))<CR>
+nnoremap <Leader>vjs :call VimuxRunCommand("bundle exec rspec " . bufname("%"))<CR>
 " Run the current spec with rspec
-nmap <Leader>vo :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . expand("%p") . ":" . line("."))<CR>
+nnoremap <Leader>vo :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . expand("%p") . ":" . line("."))<CR>
 " Run all specs
-nmap <Leader>va :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-XX:MaxPermSize=112m' bundle exec rspec spec")<CR>
+nnoremap <Leader>va :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-XX:MaxPermSize=112m' bundle exec rspec spec")<CR>
 " Run all model specs
-nmap <Leader>vm :call VimuxRunCommand("rspec spec/models")<CR>
+nnoremap <Leader>vm :call VimuxRunCommand("rspec spec/models")<CR>
 " Run all controller specs
-nmap <Leader>vc :call VimuxRunCommand("rspec spec/models")<CR>
+nnoremap <Leader>vc :call VimuxRunCommand("rspec spec/models")<CR>
 " Prompt for a command to run map
-nmap <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-nmap <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-nmap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <Leader>vi :VimuxInspectRunner<CR>
 " Close vim tmux runner opened by VimuxRunCommand
-nmap <Leader>vq :VimuxCloseRunner<CR>
+nnoremap <Leader>vq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane map
-nmap <Leader>vx :VimuxInterruptRunner<CR>
+nnoremap <Leader>vx :VimuxInterruptRunner<CR>
 
 "Run the current file with test_unit
-nmap <Leader>ru :call VimuxRunCommand("ruby -Itest " . bufname("%"))<CR>
+nnoremap <Leader>ru :call VimuxRunCommand("ruby -Itest " . bufname("%"))<CR>
 "Run the current spec with test_unit
-nmap <Leader>ro :call VimuxRunCommand("clear; ruby " . expand("%p") . ":" . line("."))<CR>
+nnoremap <Leader>ro :call VimuxRunCommand("ruby " . expand("%p") . ":" . line("."))<CR>
 
 "Run all tests
-nmap <Leader>rt :call VimuxRunCommand("clear; bundle exec rake test")<CR>
+nnoremap <Leader>rt :call VimuxRunCommand("bundle exec rake test")<CR>
 "Run the current file with minitest
-nmap <Leader>ms :call VimuxRunCommand("clear; ruby -Itest -rminitest/pride " . bufname("%"))<CR>
+nnoremap <Leader>ms :call VimuxRunCommand("ruby -Itest -rminitest/pride " . bufname("%"))<CR>
 "Run all specs with minitest
-nmap <Leader>ma :call VimuxRunCommand("clear; ruby -Itest -rminitest/pride spec/specs.rb")<CR>
+nnoremap <Leader>ma :call VimuxRunCommand("ruby -Itest -rminitest/pride spec/specs.rb")<CR>
 
 "Vivo
-nmap <Leader>vd :call VimuxRunCommand("ant deploy -Dskiptests=true")<CR>
-nmap <Leader>aa :call VimuxRunCommand("ant all -Dskiptests=true")<CR>
+nnoremap <Leader>vd :call VimuxRunCommand("ant deploy -Dskiptests=true")<CR>
+nnoremap <Leader>aa :call VimuxRunCommand("ant all -Dskiptests=true")<CR>
 
 "IRB
 "Load the current file in ruby
 "Make this harder to do
-nmap <Leader>+lf :call VimuxRunCommand("load \'" . bufname("%") . "\'")<CR>
+nnoremap <Leader>+lf :call VimuxRunCommand("load \'" . bufname("%") . "\'")<CR>
 
 "Surround shortcuts
 "Surround all text on line
 nmap <Leader>ss $v^S
 " Clear the search buffer
-nmap <Leader>h :nohlsearch<cr>
+nnoremap <Leader>h :nohlsearch<cr>
 
 " Directory of current file with '%%'
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
@@ -191,7 +193,7 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-nmap <leader>rn :call RenameFile()<cr>
+nnoremap <leader>rn :call RenameFile()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXTRACT METHOD
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -202,10 +204,10 @@ function! ExtractMethod()
   execute ":normal G?def\<cr>%o\<cr>def " . method_name
   normal! oend
   normal! O
-  normal! p==
+  normal! p==`d
 endfunction
-nmap <Leader>em vg_d:call ExtractMethod()<CR>
-vmap <leader>em d:call ExtractMethod()<CR>
+nnoremap <Leader>em vg_d:call ExtractMethod()<CR>
+vnoremap <leader>em d:call ExtractMethod()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PROMOTE VARIABLE TO RSPEC LET
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -265,8 +267,8 @@ set directory=$HOME/.vim_backups
 augroup smart_closure
   autocmd!
   autocmd FileType html imap {{ {{}}<Esc>hi
-  autocmd FileType css iunmap {{
-  autocmd FileType javascript iunmap {{
+  autocmd FileType css inoremap { {
+  autocmd FileType javascript inoremap { {
 augroup END
 
 augroup vimrcEx
@@ -304,10 +306,10 @@ set statusline=%<(%{&ft})\ %{fugitive#statusline()}\ %=%-8(%3l,%02c%03V%)(%p%%)\
 set wildmode=longest,list
 set wildmenu
 " Catch trailing whitespace
-nmap <leader>sw /\s\+$<CR>
+nnoremap <leader>sw /\s\+$<CR>
 " Show last command
-nmap <leader>l1 :<up>
-nmap <leader>l2 :<up><up>
+nnoremap <leader>l1 :<up>
+nnoremap <leader>l2 :<up><up>
 set visualbell
 set shortmess=AI " Do not warn of existing swap file or show intro
 set matchpairs+=<:> " % jumps between carets
@@ -332,10 +334,11 @@ let g:slimv_swank_cmd = '! xterm -e scheme --load /home/patrick/.vim/bundle/slim
 "pt = put
 nnoremap <Leader>pt "xyiwoputs ": #{}"<esc>F:"xPf{"xp 
 nnoremap <Leader>pit "xyiwoputs ": #{.inspect}"<esc>F:"xPf{"xp 
-vmap <Leader>pt "xyoputs ": #{}"<esc>F:"xPf{"xp
+vnoremap <Leader>pt "xyoputs ": #{}"<esc>F:"xPf{"xp
+vnoremap <Leader>pit "xyoputs ": #{.inspect}"<esc>F:"xPf{"xp
 "log to java in cljs
-nmap <Leader>jc "lyiwo(.log js/console <Esc>"lp
-vmap <Leader>jc "lyo(.log js/console <Esc>"lp
+nnoremap <Leader>jc "lyiwo(.log js/console <Esc>"lp
+vnoremap <Leader>jc "lyo(.log js/console <Esc>"lp
 
 "Refactoring (based on ecomba)
 " convert symbol to key of hash
@@ -377,8 +380,8 @@ function! InlineTemp()
 endfunction
 
 "MATH
-nmap <Leader>me a ∈<Esc>
-nmap <Leader>mz a ℤ<Esc>
+nnoremap <Leader>me a ∈<Esc>
+nnoremap <Leader>mz a ℤ<Esc>
 
 "Autosave changes to this file
 autocmd! bufwritepost .vimrc source $MYVIMRC
@@ -399,22 +402,31 @@ autocmd InsertEnter * :set number
 autocmd InsertLeave * silent! :set relativenumber
 
 "git
-nmap <Leader>gr :Gread<CR>:w<CR>:Gstatus<CR>
+nnoremap <Leader>gr :Gread<CR>:w<CR>:Gstatus<CR>
 
 "Clojure
 autocmd FileType clojure,lisp let b:AutoClosePairs = AutoClose#ParsePairs("() [] {} ` \"")
-nmap <Leader>dc "vyiw :call VimuxRunCommand("(doc " . @v . ")\n", 0)<CR>
-"vmap <Leader>vt "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
+nnoremap <Leader>dc "vyiw :call VimuxRunCommand("(doc " . @v . ")\n", 0)<CR>
+"vnoremap <Leader>vt "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
 "map <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
 "Remove a layer of parentheses, leaving only last item
-nmap <Leader>rp ds)dt(
+nnoremap <Leader>rp ds)dt(
 
 "au BufNewFile,BufRead *.quicktask set filetype=quicktask
 
 "Markdown
 "link
-nmap <Leader>lk ysiw]f]a(
-vmap <Leader>lk S]f]a(
+nnoremap <Leader>lk ysiw]f]a(
+vnoremap <Leader>lk S]f]a(
 
 "Gundo
 nnoremap <Leader>gu :GundoToggle<CR>
+
+"Play-clj
+"Play-Clj ReLoad
+nnoremap <Leader>pcrl :call VimuxRunCommand("(use 'our-first-game.core :reload)")<CR>
+"Play-Clj ReStart
+nnoremap <Leader>pcrs :call VimuxRunCommand("(on-gl (set-screen! our-first-game main-screen))")<CR>
+nnoremap <Leader>pcrr :call VimuxRunCommand("(use 'our-first-game.core :reload) (on-gl (set-screen! our-first-game main-screen))")<CR>
+
+au BufRead,BufNewFile {Capfile,Gemfile,Gemfile.lock,Rakefile,config.ru,} set ft=ruby
