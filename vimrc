@@ -45,6 +45,7 @@ filetype indent on
 filetype plugin on
 
 imap jk <Esc>
+imap kj <Esc>
 " Change mapleader from \ to ,
 " Remap comma function
 let mapleader=" "
@@ -108,8 +109,8 @@ nnoremap <Leader>md :!mkdir -p %:h<CR>
 " If text is selected, save it in v buffer and send to tmux
 vnoremap <Leader>vt "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
 " Select current paragraph and send it to tmux
-nnoremap <Leader>vt vip<Leader>vt
-nnoremap <Leader>vv V<Leader>vt
+nmap <Leader>vt vip<Leader>vt
+nmap <Leader>vv V<Leader>vt
 
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "23"
@@ -118,7 +119,7 @@ let VimuxUseNearestPane = 1
 " Run the current file with rspec, excluding js specs
 nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
 " Run the current spec with rspec, including js specs
-nnoremap <Leader>vjs :call VimuxRunCommand("bundle exec rspec " . bufname("%"))<CR>
+nnoremap <Leader>vjs :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . bufname("%"))<CR>
 " Run the current spec with rspec
 nnoremap <Leader>vo :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . expand("%p") . ":" . line("."))<CR>
 " Run all specs
