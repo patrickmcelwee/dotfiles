@@ -80,3 +80,7 @@ set -o vi
 if [ ! -n "$SSH_CLIENT" ]; then
   export PS1='\W \u$ '
 fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
