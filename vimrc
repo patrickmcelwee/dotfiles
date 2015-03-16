@@ -46,7 +46,6 @@ filetype indent on
 filetype plugin on
 
 imap jk <Esc>
-imap kj <Esc>
 " Change mapleader from \ to ,
 " Remap comma function
 let mapleader=" "
@@ -81,7 +80,6 @@ let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log)$'
 "map <Leader>gdd :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/models<CR>
 
 nnoremap <Leader>jc :!javac % <CR>
-nnoremap <Leader>nd :NERDTreeToggle<CR>
 let g:user_emmet_leader_key='<C-Q>'
 
 " Lazy save 
@@ -99,9 +97,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-" Scroll faster
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
 
 "Create directory for current open file
 nnoremap <Leader>md :!mkdir -p %:h<CR>
@@ -210,18 +205,6 @@ function! ExtractMethod()
 endfunction
 nnoremap <Leader>em vg_d:call ExtractMethod()<CR>
 vnoremap <leader>em d:call ExtractMethod()<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PROMOTE VARIABLE TO RSPEC LET
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! PromoteToLet()
-  :normal! dd
-  " :exec '?^\s*it\>'
-  :normal! P
-  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
-  :normal ==
-endfunction
-:command! PromoteToLet :call PromoteToLet()
-:map <leader>p :PromoteToLet<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
