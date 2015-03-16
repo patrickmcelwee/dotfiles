@@ -2,6 +2,7 @@ set nocompatible
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set diffopt=vertical,filler
 silent! set relativenumber
 filetype off
 
