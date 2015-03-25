@@ -1,0 +1,5 @@
+# enable vi-mode
+set editing-mode vi
+set keymap vi
+# Turn on case insensitivity for tab-completion
+set completion-ignore-case on
