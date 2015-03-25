@@ -39,6 +39,16 @@ Bundle  'digitaltoad/vim-jade'
 Bundle  'amdt/vim-niji'
 Bundle  'sjl/gundo.vim'
 Bundle  'niklasl/vim-rdf'
+Bundle 'patrickmcelwee/sonicpi.vim'
+
+let g:sonicpi_keymaps_enabled = 0
+nnoremap <leader>P :silent w !sonic_pi<CR>
+inoremap <C-p> <C-O>:silent w !sonic_pi<CR>
+nnoremap <leader>S :call system("sonic_pi stop")<CR>
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-x><C-o>
+inoremap <C-j> <C-n>
+inoremap <C-k> <C-p>
 
 call vundle#end()
 filetype on
