@@ -4,6 +4,7 @@ set shiftwidth=2
 set softtabstop=2
 set diffopt=vertical,filler
 silent! set relativenumber
+silent! set number
 filetype off
 
 let g:blockle_mapping = '<Leader>ed'
@@ -380,21 +381,6 @@ nnoremap <Leader>mz a ℤ<Esc>
 
 "Autosave changes to this file
 autocmd! bufwritepost .vimrc source $MYVIMRC
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
-
-autocmd FocusLost * :set number
-autocmd FocusGained * silent! :set relativenumber
-autocmd InsertEnter * :set number
-autocmd InsertLeave * silent! :set relativenumber
 
 "git
 nnoremap <Leader>gr :Gread<CR>:w<CR>:Gstatus<CR>
