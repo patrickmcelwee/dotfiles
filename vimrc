@@ -100,7 +100,7 @@ inoremap <C-s> <Esc>:w<CR>
 nnoremap <Leader><Leader> <C-^>
 
 "Open this rc file
-nnoremap <Leader>rc :e ~/.vimrc<CR>
+nnoremap <Leader>rc :e ~/dotfiles/vimrc<CR>
 
 "Move between windows
 nnoremap <C-j> <C-w>j
