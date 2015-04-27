@@ -34,7 +34,6 @@ Bundle  'patrickmcelwee/ftl-vim-syntax'
 Bundle  'groenewege/vim-less'
 Bundle  'mattpap/vim-owl-tools'
 Bundle  'jgdavey/vim-blockle'
-Bundle  'aaronbieber/quicktask'
 Bundle  'derekwyatt/vim-scala'
 Bundle  'digitaltoad/vim-jade'
 Bundle  'amdt/vim-niji'
@@ -392,8 +391,6 @@ nnoremap <Leader>dc "vyiw :call VimuxRunCommand("(doc " . @v . ")\n", 0)<CR>
 "map <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
 "Remove a layer of parentheses, leaving only last item
 nnoremap <Leader>rp ds)dt(
-
-"au BufNewFile,BufRead *.quicktask set filetype=quicktask
 
 "Markdown
 "link
