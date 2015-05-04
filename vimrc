@@ -7,7 +7,6 @@ silent! set relativenumber
 silent! set number
 filetype off
 
-let g:blockle_mapping = '<Leader>ed'
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -15,12 +14,11 @@ Bundle  'gmarik/Vundle.vim'
 Bundle  'tpope/vim-rails.git'
 Bundle  'tpope/vim-fugitive.git'
 "Bundle 'scrooloose/nerdtree.git' # corrupting characters
-Bundle  'tpope/vim-rvm.git'
 Bundle  'tpope/vim-endwise.git'
 Bundle  'tpope/vim-surround.git'
 Bundle  'Townk/vim-autoclose'
 "Bundle 'vim-scripts/slimv.vim'
-Bundle  'kchmck/vim-coffee-script'
+"Bundle  'kchmck/vim-coffee-script'
 "Bundle 'tpope/vim-haml'
 Bundle  'altercation/vim-colors-solarized'
 Bundle  'kien/ctrlp.vim'
@@ -28,18 +26,18 @@ Bundle  'benmills/vimux'
 Bundle  'mattn/emmet-vim'
 Bundle  'scrooloose/nerdcommenter.git'
 Bundle  'jwhitley/vim-matchit.git'
-Bundle  'tpope/vim-fireplace'
+"Bundle  'tpope/vim-fireplace'
 Bundle  'guns/vim-clojure-static'
-Bundle  'patrickmcelwee/ftl-vim-syntax'
 Bundle  'groenewege/vim-less'
-Bundle  'mattpap/vim-owl-tools'
-Bundle  'jgdavey/vim-blockle'
+"Bundle  'mattpap/vim-owl-tools'
 Bundle  'derekwyatt/vim-scala'
-Bundle  'digitaltoad/vim-jade'
-Bundle  'amdt/vim-niji'
+"Bundle  'digitaltoad/vim-jade'
+Bundle  'raymond-w-ko/vim-niji'
 Bundle  'sjl/gundo.vim'
-Bundle  'niklasl/vim-rdf'
+"Bundle  'niklasl/vim-rdf'
 Bundle 'patrickmcelwee/sonicpi.vim'
+Bundle 'othree/xml.vim'
+Bundle 'wookiehangover/jshint.vim'
 
 let g:sonicpi_keymaps_enabled = 0
 nnoremap <leader>P :silent w !sonic_pi<CR>
@@ -90,7 +88,7 @@ let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log)$'
 "map <Leader>gdd :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/models<CR>
 
 nnoremap <Leader>jc :!javac % <CR>
-let g:user_emmet_leader_key='<C-Q>'
+let g:user_emmet_leader_key='<C-Z>'
 
 " Lazy save 
 nnoremap <C-s> :w<CR>
@@ -270,7 +268,7 @@ augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
   autocmd FileType text setlocal textwidth=78
-  autocmd FileType text setlocal formatoptions=tan
+  autocmd FileType text setlocal formatoptions=tcq
   " Jump to last cursor position unless it's invalid or in an event handler
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -380,6 +378,7 @@ nnoremap <Leader>mz a ℤ<Esc>
 
 "Autosave changes to this file
 autocmd! bufwritepost .vimrc source $MYVIMRC
+autocmd! bufwritepost vimrc source $MYVIMRC
 
 "git
 nnoremap <Leader>gr :Gread<CR>:w<CR>:Gstatus<CR>
