@@ -1,11 +1,9 @@
 #!/bin/sh
-if [ -d '/usr/local/Cellar/tomcat/6.0.26' ]; then
-  export CATALINA_HOME=/usr/local/Cellar/tomcat/6.0.26/libexec
-elif [ -d '/usr/local/Cellar/tomcat/7.0.54' ]; then
-  export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.53/libexec
+if [ -d '/usr/local/Cellar/tomcat/8.0.21' ]; then
+  export CATALINA_HOME=/usr/local/Cellar/tomcat/8.0.21/libexec
 else
   echo "ERROR: Could not locate tomcat in /usr/local/Cellar/"
-  echo "--> Script currently only supports 6.0.26 and 7.0.54"
+  echo "--> Script currently only supports 8.0.21"
 fi
 
 case "$1" in
@@ -20,7 +18,7 @@ case "$1" in
     ps aux | grep [j]ava
     ;;
   "tail" )
-    tail -f $CATALINA_HOME/logs/catalina.out
+    tail -f $CATALINA_HOME/logs/*
     ;;
   "log" )
     vim $CATALINA_HOME/logs/catalina.out
