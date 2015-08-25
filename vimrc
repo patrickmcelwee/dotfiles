@@ -24,7 +24,8 @@ Bundle  'altercation/vim-colors-solarized'
 Bundle  'kien/ctrlp.vim'
 Bundle  'benmills/vimux'
 Bundle  'mattn/emmet-vim'
-Bundle  'scrooloose/nerdcommenter.git'
+"Bundle  'scrooloose/nerdcommenter.git'
+Bundle  'tpope/vim-commentary'
 Bundle  'jwhitley/vim-matchit.git'
 "Bundle  'tpope/vim-fireplace'
 Bundle  'guns/vim-clojure-static'
@@ -34,10 +35,10 @@ Bundle  'derekwyatt/vim-scala'
 "Bundle  'digitaltoad/vim-jade'
 Bundle  'raymond-w-ko/vim-niji'
 Bundle  'sjl/gundo.vim'
-"Bundle  'niklasl/vim-rdf'
+Bundle  'niklasl/vim-rdf'
 Bundle 'patrickmcelwee/sonicpi.vim'
 Bundle 'othree/xml.vim'
-Bundle 'wookiehangover/jshint.vim'
+Bundle 'patrickmcelwee/jshint.vim'
 
 let g:sonicpi_keymaps_enabled = 0
 nnoremap <leader>P :silent w !sonic_pi<CR>
@@ -64,16 +65,6 @@ nnoremap <Leader>w :w<CR>
 
 set background=dark
 colorscheme solarized
-
-" Vivo_Admin
-" When in a resource, open its map
-nnoremap <Leader>mp :e app/maps/%:t:r_map.rb<CR>
-" When in a map, open its resource
-nnoremap <Leader>rs :e lib/duke_vivo_mapper/resources/%:t:r:s/_map//.rb<CR>
-
-" Code to create a new data loader
-nnoremap <leader>dl a<space>Rails.configuration.data_loader_factory.create_data_loader<Esc>
-nnoremap <leader>es aexpect(subject.)<Esc>==g_i
 
 " Ctrl-P
 nnoremap <Leader>f :CtrlP <CR>
@@ -157,7 +148,7 @@ nnoremap <Leader>ma :call VimuxRunCommand("ruby -Itest -rminitest/pride spec/spe
 
 "Vivo
 nnoremap <Leader>vd :call VimuxRunCommand("ant deploy -Dskiptests=true")<CR>
-nnoremap <Leader>aa :call VimuxRunCommand("ant all -Dskiptests=true")<CR>
+nnoremap <Leader>aa :call VimuxRunCommand("ant all -Djava.awt.headless=true -Dskiptests=true")<CR>
 
 "IRB
 "Load the current file in ruby
@@ -407,3 +398,4 @@ nnoremap <Leader>pcrs :call VimuxRunCommand("(on-gl (set-screen! our-first-game 
 nnoremap <Leader>pcrr :call VimuxRunCommand("(use 'our-first-game.core :reload) (on-gl (set-screen! our-first-game main-screen))")<CR>
 
 au BufRead,BufNewFile {Capfile,Gemfile,Gemfile.lock,Rakefile,config.ru,} set ft=ruby
+nnoremap <Leader>1 :set norelativenumber! nonumber!<CR>
