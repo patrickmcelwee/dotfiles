@@ -2,10 +2,20 @@ if [ -f ~/.custom_bash_profile ]; then
   source ~/.custom_bash_profile
 fi
 
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+$(boot2docker shellinit)
+
 HISTFILESIZE=5000
 
 alias vb='vim ~/.bashrc'
 alias sb='source ~/.bashrc'
+
+alias doco='docker-compose'
+
+alias java7='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
+alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 
 alias ls='ls -G'
 alias ll='ls -ltr'
@@ -14,7 +24,7 @@ alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
 
 alias pg='ps aux | grep'
 alias hsg='history | grep'
-alias start-mysql='sudo /usr/local/mysql/bin/mysqld_safe'
+alias start-mysql='mysql.server start'
 alias tomcat='sh ~/.scripts/tomcat.sh'
 alias tomcat7='sh ~/.scripts/tomcat7.sh'
 alias torqueboxrun='jruby -S torquebox run -J "\-Xmx1024m \-XX:MaxPermSize=528m"'
@@ -62,6 +72,7 @@ export CPPFLAGS=-I/opt/X11/include
 export JVM_OPTS='-Djava.awt.headless=true'
 export JRUBY_OPTS='-J-XX:MaxPermSize=112m --1.9 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -J-Djava.awt.headless=true'
 export JAVA_OPTS="-client -Djava.awt.headless=true"
+export MAVEN_OPTS="-Djava.awt.headless=true"
 
 # git autocomplete branches
 if [ -f ~/.scripts/git-completion.bash ]; then
