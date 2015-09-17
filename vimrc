@@ -111,6 +111,11 @@ let g:VimuxOrientation = "h"
 let g:VimuxHeight = "23"
 let VimuxUseNearestPane = 1
 
+"MarkLogic
+nnoremap <Leader>dr :call VimuxRunCommand("./ml local deploy rest")<CR>
+nnoremap <Leader>dm :call VimuxRunCommand("./ml local deploy modules")<CR>
+nnoremap <Leader>dd :call VimuxRunCommand("./ml local deploy_data")<CR>
+
 " Run the current file with rspec, excluding js specs
 nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
 " Run the current spec with rspec, including js specs
@@ -314,12 +319,6 @@ endif
 
 let g:slimv_swank_cmd = '! xterm -e scheme --load /home/patrick/.vim/bundle/slimv.vim/slime/contrib/swank-mit-scheme.scm &'
 
-" Puts out value of a variable below its definition
-"pt = put
-nnoremap <Leader>pt "xyiwoputs ": #{}"<esc>F:"xPf{"xp 
-nnoremap <Leader>pit "xyiwoputs ": #{.inspect}"<esc>F:"xPf{"xp 
-vnoremap <Leader>pt "xyoputs ": #{}"<esc>F:"xPf{"xp
-vnoremap <Leader>pit "xyoputs ": #{.inspect}"<esc>F:"xPf{"xp
 "log to java in cljs
 nnoremap <Leader>jc "lyiwo(.log js/console <Esc>"lp
 vnoremap <Leader>jc "lyo(.log js/console <Esc>"lp
