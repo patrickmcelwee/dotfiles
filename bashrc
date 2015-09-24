@@ -7,7 +7,7 @@ source $(brew --prefix nvm)/nvm.sh
 
 $(boot2docker shellinit)
 
-HISTFILESIZE=5000
+HISTSIZE=5000
 
 alias vb='vim ~/.bashrc'
 alias sb='source ~/.bashrc'
