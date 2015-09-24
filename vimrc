@@ -115,6 +115,9 @@ let VimuxUseNearestPane = 1
 nnoremap <Leader>dr :call VimuxRunCommand("./ml local deploy rest")<CR>
 nnoremap <Leader>dm :call VimuxRunCommand("./ml local deploy modules")<CR>
 nnoremap <Leader>dd :call VimuxRunCommand("./ml local deploy_data")<CR>
+nnoremap <Leader>db :call VimuxRunCommand("./ml local bootstrap")<CR>
+
+au BufNewFile,BufRead *.sjs set filetype=javascript
 
 " Run the current file with rspec, excluding js specs
 nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
