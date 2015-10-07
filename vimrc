@@ -112,10 +112,10 @@ let g:VimuxHeight = "23"
 let VimuxUseNearestPane = 1
 
 "MarkLogic
-nnoremap <Leader>dr :call VimuxRunCommand("./ml local deploy rest")<CR>
-nnoremap <Leader>dm :call VimuxRunCommand("./ml local deploy modules")<CR>
-nnoremap <Leader>dd :call VimuxRunCommand("./ml local deploy_data")<CR>
-nnoremap <Leader>db :call VimuxRunCommand("./ml local bootstrap")<CR>
+nmap <Leader>dr :call VimuxRunCommand("./ml local deploy rest")<CR>
+nmap <Leader>dm :call VimuxRunCommand("./ml local deploy modules")<CR>
+nmap <Leader>dd :call VimuxRunCommand("./ml local deploy_data")<CR>
+nmap <Leader>db :call VimuxRunCommand("./ml local bootstrap")<CR>
 
 au BufNewFile,BufRead *.sjs set filetype=javascript
 
