@@ -119,6 +119,8 @@ nmap <Leader>db :call VimuxRunCommand("./ml local bootstrap")<CR>
 
 au BufNewFile,BufRead *.sjs set filetype=javascript
 
+autocmd FileType xquery setlocal commentstring=(:%s:)
+
 " Run the current file with rspec, excluding js specs
 nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
 " Run the current spec with rspec, including js specs
