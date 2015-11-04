@@ -10,35 +10,36 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle  'gmarik/Vundle.vim'
-Bundle  'tpope/vim-rails.git'
-Bundle  'tpope/vim-fugitive.git'
-"Bundle 'scrooloose/nerdtree.git' # corrupting characters
-Bundle  'tpope/vim-endwise.git'
-Bundle  'tpope/vim-surround.git'
-Bundle  'Townk/vim-autoclose'
-"Bundle 'vim-scripts/slimv.vim'
-"Bundle  'kchmck/vim-coffee-script'
-"Bundle 'tpope/vim-haml'
-Bundle  'altercation/vim-colors-solarized'
-Bundle  'kien/ctrlp.vim'
-Bundle  'benmills/vimux'
-Bundle  'mattn/emmet-vim'
-"Bundle  'scrooloose/nerdcommenter.git'
-Bundle  'tpope/vim-commentary'
-Bundle  'jwhitley/vim-matchit.git'
-"Bundle  'tpope/vim-fireplace'
-Bundle  'guns/vim-clojure-static'
-Bundle  'groenewege/vim-less'
-"Bundle  'mattpap/vim-owl-tools'
-Bundle  'derekwyatt/vim-scala'
-"Bundle  'digitaltoad/vim-jade'
-Bundle  'raymond-w-ko/vim-niji'
-Bundle  'sjl/gundo.vim'
-Bundle  'niklasl/vim-rdf'
-Bundle 'patrickmcelwee/sonicpi.vim'
-Bundle 'othree/xml.vim'
-Bundle 'patrickmcelwee/jshint.vim'
+Plugin  'gmarik/Vundle.vim'
+Plugin  'tpope/vim-rails.git'
+Plugin  'tpope/vim-fugitive.git'
+"Plugin 'scrooloose/nerdtree.git' # corrupting characters
+Plugin  'tpope/vim-endwise.git'
+Plugin  'tpope/vim-surround.git'
+Plugin  'Townk/vim-autoclose'
+"Plugin 'vim-scripts/slimv.vim'
+"Plugin  'kchmck/vim-coffee-script'
+"Plugin 'tpope/vim-haml'
+Plugin  'altercation/vim-colors-solarized'
+Plugin  'kien/ctrlp.vim'
+Plugin  'benmills/vimux'
+Plugin  'mattn/emmet-vim'
+"Plugin  'scrooloose/nerdcommenter.git'
+Plugin  'tpope/vim-commentary'
+Plugin  'jwhitley/vim-matchit.git'
+"Plugin  'tpope/vim-fireplace'
+Plugin  'guns/vim-clojure-static'
+Plugin  'groenewege/vim-less'
+"Plugin  'mattpap/vim-owl-tools'
+Plugin  'derekwyatt/vim-scala'
+"Plugin  'digitaltoad/vim-jade'
+Plugin  'raymond-w-ko/vim-niji'
+Plugin  'sjl/gundo.vim'
+Plugin  'niklasl/vim-rdf'
+" Plugin 'patrickmcelwee/sonicpi.vim'
+Plugin 'othree/xml.vim'
+Plugin 'patrickmcelwee/jshint.vim'
+Plugin 'reedes/vim-pencil'
 
 let g:sonicpi_keymaps_enabled = 0
 nnoremap <leader>P :silent w !sonic_pi<CR>
@@ -80,10 +81,6 @@ let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log)$'
 
 nnoremap <Leader>jc :!javac % <CR>
 let g:user_emmet_leader_key='<C-Z>'
-
-" Lazy save 
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
 
 " Switch to last window
 nnoremap <Leader><Leader> <C-^>
@@ -305,7 +302,7 @@ nnoremap <leader>sw /\s\+$<CR>
 nnoremap <leader>l1 :<up>
 nnoremap <leader>l2 :<up><up>
 set visualbell
-set shortmess=AI " Do not warn of existing swap file or show intro
+set shortmess=AIlw " Do not warn of existing swap file or show intro
 set matchpairs+=<:> " % jumps between carets
 "Display a visual barrier for col 80
 silent! set colorcolumn=80
@@ -328,7 +325,7 @@ let g:slimv_swank_cmd = '! xterm -e scheme --load /home/patrick/.vim/bundle/slim
 nnoremap <Leader>jc "lyiwo(.log js/console <Esc>"lp
 vnoremap <Leader>jc "lyo(.log js/console <Esc>"lp
 
-"Refactoring (based on ecomba)
+"Ruby Refactoring (based on ecomba)
 " convert symbol to key of hash
 nnoremap <Leader>rh F:xepa<space>
 nnoremap <leader>it :call InlineTemp()<CR>
@@ -388,7 +385,7 @@ nnoremap <Leader>rp ds)dt(
 
 "Markdown
 "link
-nnoremap <Leader>lk ysiw]f]a(
+nnoremap <Leader>lk lbi[<esc>ea]<Esc>a()
 vnoremap <Leader>lk S]f]a(
 
 "Gundo
@@ -402,4 +399,14 @@ nnoremap <Leader>pcrs :call VimuxRunCommand("(on-gl (set-screen! our-first-game 
 nnoremap <Leader>pcrr :call VimuxRunCommand("(use 'our-first-game.core :reload) (on-gl (set-screen! our-first-game main-screen))")<CR>
 
 au BufRead,BufNewFile {Capfile,Gemfile,Gemfile.lock,Rakefile,config.ru,} set ft=ruby
+au BufNewFile,BufRead *.gradle set ft=groovy
+
 nnoremap <Leader>1 :set norelativenumber! nonumber!<CR>
+
+let g:pencil#wrapModeDefault = 'soft'
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
+let g:markdown_fenced_languages = ['html', 'xml', 'javascript', 'xquery', 'python', 'ruby', 'bash=sh']
