@@ -2,6 +2,9 @@ if [ -f ~/.custom_bash_profile ]; then
   source ~/.custom_bash_profile
 fi
 
+export XMLSH=/usr/local/xmlsh
+export PATH=$PATH:$XMLSH/unix
+
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
@@ -21,19 +24,11 @@ alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 alias ls='ls -G'
 alias ll='ls -ltr'
 
-alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
-
 alias pg='ps aux | grep'
 alias hsg='history | grep'
 alias start-mysql='mysql.server start'
-alias tomcat='sh ~/.scripts/tomcat.sh'
-alias tomcat7='sh ~/.scripts/tomcat7.sh'
-alias torqueboxrun='jruby -S torquebox run -J "\-Xmx1024m \-XX:MaxPermSize=528m"'
 
 alias g='git'
-
-alias cdd='bundle exec cap development deploy'
-alias cad='bundle exec cap acceptance deploy'
 
 # :-)
 alias mirror='/Applications/Photo\ Booth.app/Contents/MacOS/Photo\ Booth'
@@ -52,14 +47,10 @@ vim()
   stty "$STTYOPTS"
 }
 
-export SQLPATH=/opt/oracle/instantclient_11_2
-export DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/bin
-export ORACLE_HOME=/opt/oracle/instantclient_11_2
 export TERM=screen-256color
 export NLS_LANG=AMERICAN_AMERICA.UTF8
  
-export PATH=$PATH:$ORACLE_HOME
 export PATH=$PATH:/usr/local/mysql/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -78,11 +69,6 @@ export MAVEN_OPTS="-Djava.awt.headless=true"
 # git autocomplete branches
 if [ -f ~/.scripts/git-completion.bash ]; then
   . ~/.scripts/git-completion.bash
-fi
-
-# ads sub command (https://github.com/37signals/sub)
-if [ -f ~/work/ads-sub/bin/ads ]; then
-  eval "$(~/work/ads-sub/bin/ads init -)"
 fi
 
 set -o vi
