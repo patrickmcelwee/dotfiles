@@ -40,6 +40,7 @@ Plugin  'niklasl/vim-rdf'
 Plugin 'othree/xml.vim'
 Plugin 'patrickmcelwee/jshint.vim'
 Plugin 'reedes/vim-pencil'
+Plugin 'jeroenp/vim-xquery-syntax'
 
 let g:sonicpi_keymaps_enabled = 0
 nnoremap <leader>P :silent w !sonic_pi<CR>
@@ -113,6 +114,12 @@ nmap <Leader>dr :call VimuxRunCommand("./ml local deploy rest")<CR>
 nmap <Leader>dm :call VimuxRunCommand("./ml local deploy modules")<CR>
 nmap <Leader>dd :call VimuxRunCommand("./ml local deploy_data")<CR>
 nmap <Leader>db :call VimuxRunCommand("./ml local bootstrap")<CR>
+
+"XMLSH
+nmap <Leader>xml :call VimuxRunCommand("xmlsh")<CR>
+  \ :call VimuxRunCommand("import module ml=marklogic")<CR>
+  \ :call VimuxRunCommand("MLCONNECT=xcc://admin:admin@db:8000/Documents")<CR>
+nnoremap <Leader>xq :call VimuxRunCommand("ml:query -f " . bufname('%') . "\n", 0)<CR>
 
 au BufNewFile,BufRead *.sjs set filetype=javascript
 

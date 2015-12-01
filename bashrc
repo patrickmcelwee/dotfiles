@@ -3,12 +3,23 @@ if [ -f ~/.custom_bash_profile ]; then
 fi
 
 export XMLSH=/usr/local/xmlsh
+export XMODPATH=/usr/local/xmlsh/ext
 export PATH=$PATH:$XMLSH/unix
 
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
 
-$(boot2docker shellinit)
+if hash brew 2>/dev/null; then
+  if [ -f $(brew --prefix nvm)/nvm.sh ]; then
+    source $(brew --prefix nvm)/nvm.sh
+  fi
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+
+if hash boot2docker 2>/dev/null; then
+  $(boot2docker shellinit)
+fi
 
 HISTSIZE=50000
 shopt -s histappend
@@ -79,6 +90,3 @@ if [ ! -n "$SSH_CLIENT" ]; then
   export PS1='\W \u$ '
 fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
