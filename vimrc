@@ -41,6 +41,7 @@ Plugin 'othree/xml.vim'
 Plugin 'patrickmcelwee/jshint.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'jeroenp/vim-xquery-syntax'
+Plugin 'neilagabriel/vim-geeknote'
 
 let g:sonicpi_keymaps_enabled = 0
 nnoremap <leader>P :silent w !sonic_pi<CR>
