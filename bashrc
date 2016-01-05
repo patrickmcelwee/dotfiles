@@ -17,8 +17,8 @@ if hash brew 2>/dev/null; then
   fi
 fi
 
-if hash boot2docker 2>/dev/null; then
-  $(boot2docker shellinit)
+if hash docker-machine 2>/dev/null; then
+  eval $(docker-machine env docker-vm)
 fi
 
 HISTSIZE=50000
