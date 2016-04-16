@@ -33,7 +33,7 @@ alias java7='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
 alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 
 alias ls='ls -G'
-alias ll='ls -ltr'
+alias ll='ls -ltrh'
 
 alias pg='ps aux | grep'
 alias hsg='history | grep'
