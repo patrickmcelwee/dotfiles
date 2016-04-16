@@ -39,6 +39,7 @@ Plugin  'niklasl/vim-rdf'
 " Plugin 'patrickmcelwee/sonicpi.vim'
 Plugin 'othree/xml.vim'
 Plugin 'patrickmcelwee/jshint.vim'
+" SHOULD UPDATE to Shutnik/jshint2.vim
 Plugin 'reedes/vim-pencil'
 Plugin 'jeroenp/vim-xquery-syntax'
 Plugin 'neilagabriel/vim-geeknote'
@@ -65,6 +66,24 @@ syntax on
 set tags+=gems.tags
 nnoremap K -J
 nnoremap <Leader>w :w<CR>
+
+vmap <silent> <Leader>" :<C-U>call YankToClipboard(visualmode(), 1)<CR>
+nmap <silent> <Leader>" :set opfunc=YankToClipboard<CR>g@
+
+function! YankToClipboard(type, ...)
+  let sel_save = &selection
+  let &selection = "inclusive" "To yank the right text in Visual mode
+
+  if a:0 " Invoked from visual mode "
+    silent exe "normal! `<" . a:type . "`>\"+y"
+  elseif a:type == 'line'
+    silent exe "normal! '[V']\"+y"
+  else
+    silent exe "normal! `[v`]\"\+y"
+  endif
+
+  let &selection = sel_save
+endfunction
 
 set background=dark
 colorscheme solarized
@@ -121,6 +140,11 @@ nmap <Leader>xml :call VimuxRunCommand("xmlsh")<CR>
   \ :call VimuxRunCommand("import module ml=marklogic")<CR>
   \ :call VimuxRunCommand("MLCONNECT=xcc://admin:admin@db:8000/Documents")<CR>
 nnoremap <Leader>xq :call VimuxRunCommand("ml:query -f " . bufname('%') . "\n", 0)<CR>
+
+"TEMPORARY!
+nnoremap <Leader>xx :call VimuxRunCommand("ml:query -f scratch.xqy")<CR>
+nnoremap <Leader>xq :call VimuxRunCommand("ml:query -f query.xqy")<CR>
+nnoremap <Leader>xc :call VimuxRunCommand("ml:query -f clean.xqy")<CR>
 
 au BufNewFile,BufRead *.sjs set filetype=javascript
 
