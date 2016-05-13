@@ -6,3 +6,5 @@ vnoremap <buffer> <Leader>pit "xyoconsole.log(': ' + JSON.stringify());<esc>F:"x
 " Add semicolon to line
 nmap <leader>; m`A;<esc>``
 inoremap <leader>; <C-o>m`<C-o>A;<C-o>``
+
+nmap <leader>jf i(function () {<CR><space><space>'use strict';<CR><CR>})();<esc>

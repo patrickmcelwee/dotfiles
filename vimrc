@@ -36,6 +36,7 @@ Plugin  'derekwyatt/vim-scala'
 Plugin  'raymond-w-ko/vim-niji'
 Plugin  'sjl/gundo.vim'
 Plugin  'niklasl/vim-rdf'
+Plugin 'Omer/vim-sparql'
 " Plugin 'patrickmcelwee/sonicpi.vim'
 Plugin 'othree/xml.vim'
 Plugin 'patrickmcelwee/jshint.vim'
@@ -67,8 +68,8 @@ set tags+=gems.tags
 nnoremap K -J
 nnoremap <Leader>w :w<CR>
 
-vmap <silent> <Leader>" :<C-U>call YankToClipboard(visualmode(), 1)<CR>
-nmap <silent> <Leader>" :set opfunc=YankToClipboard<CR>g@
+vmap <silent> <Leader>' :<C-U>call YankToClipboard(visualmode(), 1)<CR>
+nmap <silent> <Leader>' :set opfunc=YankToClipboard<CR>g@
 
 function! YankToClipboard(type, ...)
   let sel_save = &selection
@@ -141,17 +142,12 @@ nmap <Leader>xml :call VimuxRunCommand("xmlsh")<CR>
   \ :call VimuxRunCommand("MLCONNECT=xcc://admin:admin@db:8000/Documents")<CR>
 nnoremap <Leader>xq :call VimuxRunCommand("ml:query -f " . bufname('%') . "\n", 0)<CR>
 
-"TEMPORARY!
-nnoremap <Leader>xx :call VimuxRunCommand("ml:query -f scratch.xqy")<CR>
-nnoremap <Leader>xq :call VimuxRunCommand("ml:query -f query.xqy")<CR>
-nnoremap <Leader>xc :call VimuxRunCommand("ml:query -f clean.xqy")<CR>
-
 au BufNewFile,BufRead *.sjs set filetype=javascript
 
 autocmd FileType xquery setlocal commentstring=(:%s:)
 
 " Run the current file with rspec, excluding js specs
-nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --tag ~js " . bufname("%"))<CR>
+nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --color --tag ~js " . bufname("%"))<CR>
 " Run the current spec with rspec, including js specs
 nnoremap <Leader>vjs :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . bufname("%"))<CR>
 " Run the current spec with rspec
