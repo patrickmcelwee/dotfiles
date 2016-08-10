@@ -95,7 +95,7 @@ nnoremap <Leader>b :CtrlPBuffer <CR>
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<c-f>'] }
 "exclude source and compiled files (put in target/ by scala)
-let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log)$'
+let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log|data)$'
 "map <Leader>gdm :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/maps<CR>
 "map <Leader>gdr :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/resources<CR>
 "map <Leader>gds :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/sources<CR>
@@ -352,45 +352,6 @@ let g:slimv_swank_cmd = '! xterm -e scheme --load /home/patrick/.vim/bundle/slim
 "log to java in cljs
 nnoremap <Leader>jc "lyiwo(.log js/console <Esc>"lp
 vnoremap <Leader>jc "lyo(.log js/console <Esc>"lp
-
-"Ruby Refactoring (based on ecomba)
-" convert symbol to key of hash
-nnoremap <Leader>rh F:xepa<space>
-nnoremap <leader>it :call InlineTemp()<CR>
-
-" Synopsis:
-" Inlines a variable
-function! InlineTemp()
-" Copy the variable under the cursor into the 'a' register
-" XXX: How do I copy into a variable so I don't pollute the registers?
-  let original_a = @a
-  normal "ayiw
-
-" It takes 4 diws to get the variable, equal sign, and surrounding
-" whitespace. I'm not sure why. diw is different from dw in this
-" respect.
-  normal 4diw
-" Delete the expression into the 'b' register
-  let original_b = @b
-  normal "bd$
-
-" Delete the remnants of the line
-  normal dd
-
-" Store current line, that's where we will start searching from
-  let current_line = line(".")
-
-" Find the start and end of the current block
-" TODO: tidy up if no matching 'def' found (start would be 0 atm)
-  let [block_start, block_end] = common#get_range_for_block('\<def\|it\>','Wb')
-
-" Rename the variable within the range of the block
-  call common#gsub_all_in_range(current_line, block_end, '\<' . @a . '\>', @b)
-
-" Put back original register contents
-  let @a = original_a
-  let @b = original_b
-endfunction
 
 "MATH
 nnoremap <Leader>me a ∈<Esc>

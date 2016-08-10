@@ -21,6 +21,8 @@ if hash docker-machine 2>/dev/null; then
   eval $(docker-machine env docker-vm)
 fi
 
+alias usenewdocker="unset DOCKER_TLS_VERIFY; unset DOCKER_CERT_PATH; unset DOCKER_MACHINE_NAME; unset DOCKER_HOST"
+
 HISTSIZE=50000
 shopt -s histappend
 
@@ -38,6 +40,7 @@ alias ll='ls -ltrh'
 alias pg='ps aux | grep'
 alias hsg='history | grep'
 alias start-mysql='mysql.server start'
+alias postgres='postgres -D /usr/local/var/postgres'
 
 alias g='git'
 
