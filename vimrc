@@ -136,6 +136,9 @@ nmap <Leader>dm :call VimuxRunCommand("./ml local deploy modules")<CR>
 nmap <Leader>dd :call VimuxRunCommand("./ml local deploy_data")<CR>
 nmap <Leader>db :call VimuxRunCommand("./ml local bootstrap")<CR>
 
+"gulp
+nmap <Leader>gt :call VimuxRunCommand("gulp test")<CR>
+
 "XMLSH
 nmap <Leader>xml :call VimuxRunCommand("xmlsh")<CR>
   \ :call VimuxRunCommand("import module ml=marklogic")<CR>
@@ -146,18 +149,14 @@ au BufNewFile,BufRead *.sjs set filetype=javascript
 
 autocmd FileType xquery setlocal commentstring=(:%s:)
 
-" Run the current file with rspec, excluding js specs
-nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --color --tag ~js " . bufname("%"))<CR>
-" Run the current spec with rspec, including js specs
-nnoremap <Leader>vjs :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . bufname("%"))<CR>
-" Run the current spec with rspec
-nnoremap <Leader>vo :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . expand("%p") . ":" . line("."))<CR>
-" Run all specs
+" Run all rspec specs
 nnoremap <Leader>va :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-XX:MaxPermSize=112m' bundle exec rspec spec")<CR>
-" Run all model specs
+" Run all rspec model specs
 nnoremap <Leader>vm :call VimuxRunCommand("rspec spec/models")<CR>
-" Run all controller specs
+" Run all rspec controller specs
 nnoremap <Leader>vc :call VimuxRunCommand("rspec spec/models")<CR>
+
+"Vimux
 " Prompt for a command to run map
 nnoremap <Leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
@@ -169,26 +168,10 @@ nnoremap <Leader>vq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane map
 nnoremap <Leader>vx :VimuxInterruptRunner<CR>
 
-"Run the current file with test_unit
-nnoremap <Leader>ru :call VimuxRunCommand("ruby -Itest " . bufname("%"))<CR>
-"Run the current spec with test_unit
-nnoremap <Leader>ro :call VimuxRunCommand("ruby " . expand("%p") . ":" . line("."))<CR>
-
 "Run all tests
 nnoremap <Leader>rt :call VimuxRunCommand("bundle exec rake test")<CR>
-"Run the current file with minitest
-nnoremap <Leader>ms :call VimuxRunCommand("ruby -Itest -rminitest/pride " . bufname("%"))<CR>
 "Run all specs with minitest
 nnoremap <Leader>ma :call VimuxRunCommand("ruby -Itest -rminitest/pride spec/specs.rb")<CR>
-
-"Vivo
-nnoremap <Leader>vd :call VimuxRunCommand("ant deploy -Dskiptests=true")<CR>
-nnoremap <Leader>aa :call VimuxRunCommand("ant all -Djava.awt.headless=true -Dskiptests=true")<CR>
-
-"IRB
-"Load the current file in ruby
-"Make this harder to do
-nnoremap <Leader>+lf :call VimuxRunCommand("load \'" . bufname("%") . "\'")<CR>
 
 "Surround shortcuts
 "Surround all text on line
@@ -374,8 +357,8 @@ nnoremap <Leader>rp ds)dt(
 
 "Markdown
 "link
-nnoremap <Leader>lk lbi[<esc>ea]<Esc>a()
-vnoremap <Leader>lk S]f]a(
+nnoremap <Leader>lk lbi[<esc>ea]<Esc>a()<esc>i
+vnoremap <Leader>lk "zdi[]<esc>Pla()<esc>i
 
 "Gundo
 nnoremap <Leader>gu :GundoToggle<CR>

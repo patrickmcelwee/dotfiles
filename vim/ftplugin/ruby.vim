@@ -43,3 +43,24 @@ function! InlineTemp()
   let @a = original_a
   let @b = original_b
 endfunction
+
+" Run the current file with rspec, excluding js specs
+nnoremap <Leader>vs :call VimuxRunCommand("bundle exec rspec --color --tag ~js " . bufname("%"))<CR>
+" Run the current spec with rspec, including js specs
+nnoremap <Leader>vjs :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . bufname("%"))<CR>
+" Run the current spec with rspec
+nnoremap <Leader>vo :call VimuxRunCommand("JRUBY_OPTS='$JRUBY_OPTS -J-Xmx2024m -J-XX:MaxPermSize=112m' bundle exec rspec " . expand("%p") . ":" . line("."))<CR>
+
+"Run the current file with test_unit
+nnoremap <Leader>ru :call VimuxRunCommand("ruby -Itest " . bufname("%"))<CR>
+"Run the current spec with test_unit
+nnoremap <Leader>ro :call VimuxRunCommand("ruby " . expand("%p") . ":" . line("."))<CR>
+
+"Run the current file with minitest
+nnoremap <Leader>ms :call VimuxRunCommand("ruby -Itest -rminitest/pride " . bufname("%"))<CR>
+
+"IRB
+"Load the current file in ruby
+"Make this harder to do
+nnoremap <Leader>+lf :call VimuxRunCommand("load \'" . bufname("%") . "\'")<CR>
+
