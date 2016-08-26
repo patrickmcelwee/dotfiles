@@ -23,8 +23,11 @@ fi
 
 alias usenewdocker="unset DOCKER_TLS_VERIFY; unset DOCKER_CERT_PATH; unset DOCKER_MACHINE_NAME; unset DOCKER_HOST"
 
-HISTSIZE=50000
-shopt -s histappend
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+export HISTSIZE=50000
+export HISTFILESIZE=
+export HISTFILE=~/.bash_eternal_history
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 alias vb='vim ~/.bashrc'
 alias sb='source ~/.bashrc'

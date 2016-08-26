@@ -137,6 +137,7 @@ nmap <Leader>dd :call VimuxRunCommand("./ml local deploy_data")<CR>
 nmap <Leader>db :call VimuxRunCommand("./ml local bootstrap")<CR>
 
 "gulp
+nmap <Leader>gg :call VimuxRunCommand("gulp")<CR>
 nmap <Leader>gt :call VimuxRunCommand("gulp test")<CR>
 
 "XMLSH
