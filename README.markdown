@@ -3,7 +3,7 @@ This currently has my bash, tmux and some script files. Need to add: vim config 
 To install:
 
     git clone https://github.com/patrickmcelwee/dotfiles ~/dotfiles
-    cd ~/dotfiles
-    ./install_dotfiles.sh
+    ~/dotfiles/install_dotfiles.sh
+    source ~/.bashrc
 
 This will make a backup of any config files that are not symlinks. They will be placed into ~/dotfiles\_old
