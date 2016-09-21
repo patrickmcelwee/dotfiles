@@ -1,6 +1,7 @@
 set nocompatible
 set expandtab
 set shiftwidth=2
+set tabstop=2
 set softtabstop=2
 set diffopt=vertical,filler
 silent! set relativenumber
@@ -70,6 +71,9 @@ nnoremap <Leader>w :w<CR>
 
 vmap <silent> <Leader>' :<C-U>call YankToClipboard(visualmode(), 1)<CR>
 nmap <silent> <Leader>' :set opfunc=YankToClipboard<CR>g@
+
+" For some reason, having to do this recently in Vim
+nmap <silent> <Leader>rd :redraw!
 
 function! YankToClipboard(type, ...)
   let sel_save = &selection
