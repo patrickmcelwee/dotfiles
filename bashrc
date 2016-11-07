@@ -79,7 +79,6 @@ fi
 
 export CPPFLAGS=-I/opt/X11/include
 export JVM_OPTS='-Djava.awt.headless=true'
-export JRUBY_OPTS='-J-XX:MaxPermSize=112m --1.9 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -J-Djava.awt.headless=true'
 export JAVA_OPTS="-client -Djava.awt.headless=true"
 export MAVEN_OPTS="-Djava.awt.headless=true"
 
