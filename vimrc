@@ -12,7 +12,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin  'gmarik/Vundle.vim'
-Plugin  'tpope/vim-rails.git'
+" Plugin  'tpope/vim-rails.git'
 Plugin  'tpope/vim-fugitive.git'
 "Plugin 'scrooloose/nerdtree.git' # corrupting characters
 Plugin  'tpope/vim-endwise.git'
@@ -24,15 +24,15 @@ Plugin  'Townk/vim-autoclose'
 Plugin  'altercation/vim-colors-solarized'
 Plugin  'kien/ctrlp.vim'
 Plugin  'benmills/vimux'
-Plugin  'mattn/emmet-vim'
+" Plugin  'mattn/emmet-vim'
 "Plugin  'scrooloose/nerdcommenter.git'
 Plugin  'tpope/vim-commentary'
 Plugin  'jwhitley/vim-matchit.git'
 "Plugin  'tpope/vim-fireplace'
-Plugin  'guns/vim-clojure-static'
+" Plugin  'guns/vim-clojure-static'
 Plugin  'groenewege/vim-less'
 "Plugin  'mattpap/vim-owl-tools'
-Plugin  'derekwyatt/vim-scala'
+" Plugin  'derekwyatt/vim-scala'
 "Plugin  'digitaltoad/vim-jade'
 Plugin  'raymond-w-ko/vim-niji'
 Plugin  'sjl/gundo.vim'
@@ -42,9 +42,9 @@ Plugin 'Omer/vim-sparql'
 Plugin 'othree/xml.vim'
 Plugin 'patrickmcelwee/jshint.vim'
 " SHOULD UPDATE to Shutnik/jshint2.vim
-Plugin 'reedes/vim-pencil'
+" Plugin 'reedes/vim-pencil'
 Plugin 'jeroenp/vim-xquery-syntax'
-Plugin 'neilagabriel/vim-geeknote'
+" Plugin 'neilagabriel/vim-geeknote'
 
 let g:sonicpi_keymaps_enabled = 0
 nnoremap <leader>P :silent w !sonic_pi<CR>
@@ -68,12 +68,13 @@ syntax on
 set tags+=gems.tags
 nnoremap K -J
 nnoremap <Leader>w :w<CR>
+nmap <silent> <Leader>dg :diffget<CR>
 
 vmap <silent> <Leader>' :<C-U>call YankToClipboard(visualmode(), 1)<CR>
 nmap <silent> <Leader>' :set opfunc=YankToClipboard<CR>g@
 
 " For some reason, having to do this recently in Vim
-nmap <silent> <Leader>rd :redraw!
+nmap <silent> <Leader>rd :redraw!<CR>
 
 function! YankToClipboard(type, ...)
   let sel_save = &selection
