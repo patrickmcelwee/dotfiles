@@ -66,7 +66,6 @@ vim()
 
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/bin
 export TERM=screen-256color
-export NLS_LANG=AMERICAN_AMERICA.UTF8
  
 export PATH=$PATH:/usr/local/mysql/bin
 
@@ -78,9 +77,6 @@ if [ -f /usr/local/share/chruby/chruby.sh ]; then
 fi
 
 export CPPFLAGS=-I/opt/X11/include
-export JVM_OPTS='-Djava.awt.headless=true'
-export JAVA_OPTS="-client -Djava.awt.headless=true"
-export MAVEN_OPTS="-Djava.awt.headless=true"
 
 # git autocomplete branches
 if [ -f ~/.scripts/git-completion.bash ]; then
