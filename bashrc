@@ -17,10 +17,6 @@ if hash brew 2>/dev/null; then
   fi
 fi
 
-if hash docker-machine 2>/dev/null; then
-  eval $(docker-machine env docker-vm)
-fi
-
 alias usenewdocker="unset DOCKER_TLS_VERIFY; unset DOCKER_CERT_PATH; unset DOCKER_MACHINE_NAME; unset DOCKER_HOST"
 
 # http://stackoverflow.com/questions/9457233/unlimited-bash-history
@@ -46,9 +42,6 @@ alias start-mysql='mysql.server start'
 alias postgres='postgres -D /usr/local/var/postgres'
 
 alias g='git'
-
-# :-)
-alias mirror='/Applications/Photo\ Booth.app/Contents/MacOS/Photo\ Booth'
 
 if [ -d /usr/local/Cellar/macvim ]; then
   export EDITOR='/usr/local/Cellar/macvim/*/MacVim.app/Contents/MacOS/Vim'
