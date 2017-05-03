@@ -40,20 +40,40 @@ Plugin  'niklasl/vim-rdf'
 Plugin 'Omer/vim-sparql'
 " Plugin 'patrickmcelwee/sonicpi.vim'
 Plugin 'othree/xml.vim'
-Plugin 'patrickmcelwee/jshint.vim'
-" SHOULD UPDATE to Shutnik/jshint2.vim
-" Plugin 'reedes/vim-pencil'
+Plugin 'vim-syntastic/syntastic'
+" Plugin 'Shutnik/jshint2.vim'
+Plugin 'reedes/vim-pencil'
 Plugin 'jeroenp/vim-xquery-syntax'
 " Plugin 'neilagabriel/vim-geeknote'
 
-let g:sonicpi_keymaps_enabled = 0
-nnoremap <leader>P :silent w !sonic_pi<CR>
-inoremap <C-p> <C-O>:silent w !sonic_pi<CR>
-nnoremap <leader>S :call system("sonic_pi stop")<CR>
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-x><C-o>
-inoremap <C-j> <C-n>
-inoremap <C-k> <C-p>
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_html_tidy_ignore_errors=["proprietary attribute", "is not recognized!", "discarding unexpected"]
+let g:syntastic_mode_map = {
+  \ "mode": "active",
+  \ "passive_filetypes": ["html"] }
+
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lN :lNext<CR>
+nnoremap <leader>ll :ll<CR>
+
+" let g:sonicpi_keymaps_enabled = 0
+" nnoremap <leader>P :silent w !sonic_pi<CR>
+" inoremap <C-p> <C-O>:silent w !sonic_pi<CR>
+" nnoremap <leader>S :call system("sonic_pi stop")<CR>
+" inoremap <C-Space> <C-x><C-o>
+" inoremap <C-@> <C-x><C-o>
+" inoremap <C-j> <C-n>
+" inoremap <C-k> <C-p>
 
 call vundle#end()
 filetype on
