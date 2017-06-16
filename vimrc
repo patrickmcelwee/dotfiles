@@ -44,7 +44,7 @@ Plugin 'vim-syntastic/syntastic'
 " Plugin 'Shutnik/jshint2.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'jeroenp/vim-xquery-syntax'
-" Plugin 'neilagabriel/vim-geeknote'
+Plugin 'leafgarland/typescript-vim'
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -398,6 +398,7 @@ nnoremap <Leader>pcrr :call VimuxRunCommand("(use 'our-first-game.core :reload) 
 
 au BufRead,BufNewFile {Capfile,Gemfile,Gemfile.lock,Rakefile,config.ru,} set ft=ruby
 au BufNewFile,BufRead *.gradle set ft=groovy
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 nnoremap <Leader>1 :set norelativenumber! nonumber!<CR>
 
