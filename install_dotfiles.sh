@@ -2,7 +2,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bashrc bash_profile profile tmux.conf gitconfig vimrc inputrc editrc"
+files="bashrc bash_profile profile tmux.conf gitconfig vimrc inputrc editrc eslintrc.js"
 linkeddirs="scripts vim tmux"
 
 echo "Creating $olddir for backup for existing dotfiles in ~"

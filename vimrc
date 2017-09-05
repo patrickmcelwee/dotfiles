@@ -56,8 +56,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_loc_list_height = 5
+let g:syntastic_javascript_eslint_exec = "./node_modules/.bin/eslint"
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_html_tidy_ignore_errors=["proprietary attribute", "is not recognized!", "discarding unexpected"]
+let g:syntastic_ignore_files = ['node_modules/']
 let g:syntastic_mode_map = {
   \ "mode": "active",
   \ "passive_filetypes": ["html"] }
