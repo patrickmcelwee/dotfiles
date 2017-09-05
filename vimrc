@@ -70,9 +70,9 @@ let g:syntastic_mode_map = {
   \ "mode": "active",
   \ "passive_filetypes": ["html"] }
 
-nnoremap <leader>ln :lnext<CR>
-nnoremap <leader>lN :lNext<CR>
-nnoremap <leader>ll :ll<CR>
+nmap <leader>ln :lnext<CR>
+nmap <leader>lN :lNext<CR>
+nmap <leader>ll :ll<CR>
 
 " let g:sonicpi_keymaps_enabled = 0
 " nnoremap <leader>P :silent w !sonic_pi<CR>
@@ -174,6 +174,8 @@ nmap <Leader>xml :call VimuxRunCommand("xmlsh")<CR>
 nnoremap <Leader>xq :call VimuxRunCommand("ml:query -f " . bufname('%') . "\n", 0)<CR>
 
 au BufNewFile,BufRead *.sjs set filetype=javascript
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 autocmd FileType xquery setlocal commentstring=(:%s:)
 
@@ -404,6 +406,7 @@ autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 nnoremap <Leader>1 :set norelativenumber! nonumber!<CR>
 
+au BufRead,BufNewFile *.md   set filetype=markdown
 let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
   autocmd!
