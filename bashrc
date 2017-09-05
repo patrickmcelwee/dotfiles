@@ -48,6 +48,8 @@ if [ -d /usr/local/Cellar/macvim ]; then
 else
   export EDITOR='vim'
 fi
+
+alias vim='/usr/local/Cellar/macvim/*/MacVim.app/Contents/MacOS/Vim'
 # pass through C-s to vim
 vim()
 {
