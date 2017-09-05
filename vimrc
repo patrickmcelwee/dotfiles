@@ -6,45 +6,51 @@ set softtabstop=2
 set diffopt=vertical,filler
 silent! set relativenumber
 silent! set number
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-Plugin  'gmarik/Vundle.vim'
-" Plugin  'tpope/vim-rails.git'
-Plugin  'tpope/vim-fugitive.git'
-"Plugin 'scrooloose/nerdtree.git' # corrupting characters
-Plugin  'tpope/vim-endwise.git'
-Plugin  'tpope/vim-surround.git'
-Plugin  'Townk/vim-autoclose'
-"Plugin 'vim-scripts/slimv.vim'
-"Plugin  'kchmck/vim-coffee-script'
-"Plugin 'tpope/vim-haml'
-Plugin  'altercation/vim-colors-solarized'
-Plugin  'kien/ctrlp.vim'
-Plugin  'benmills/vimux'
-" Plugin  'mattn/emmet-vim'
-"Plugin  'scrooloose/nerdcommenter.git'
-Plugin  'tpope/vim-commentary'
-Plugin  'jwhitley/vim-matchit.git'
-"Plugin  'tpope/vim-fireplace'
-" Plugin  'guns/vim-clojure-static'
-Plugin  'groenewege/vim-less'
-"Plugin  'mattpap/vim-owl-tools'
-" Plugin  'derekwyatt/vim-scala'
-"Plugin  'digitaltoad/vim-jade'
-Plugin  'raymond-w-ko/vim-niji'
-Plugin  'sjl/gundo.vim'
-Plugin  'niklasl/vim-rdf'
-Plugin 'Omer/vim-sparql'
-" Plugin 'patrickmcelwee/sonicpi.vim'
-Plugin 'othree/xml.vim'
-Plugin 'vim-syntastic/syntastic'
-" Plugin 'Shutnik/jshint2.vim'
-Plugin 'reedes/vim-pencil'
-Plugin 'jeroenp/vim-xquery-syntax'
-Plugin 'leafgarland/typescript-vim'
+call plug#begin('~/.vim/bundle')
+Plug  'gmarik/Vundle.vim'
+" Plug  'tpope/vim-rails'
+Plug  'tpope/vim-fugitive'
+"Plug 'scrooloose/nerdtree' # corrupting characters
+Plug  'tpope/vim-endwise'
+Plug  'tpope/vim-surround'
+Plug  'Townk/vim-autoclose'
+"Plug 'vim-scripts/slimv.vim'
+"Plug  'kchmck/vim-coffee-script'
+"Plug 'tpope/vim-haml'
+Plug  'altercation/vim-colors-solarized'
+Plug  'kien/ctrlp.vim'
+Plug  'benmills/vimux'
+" Plug  'mattn/emmet-vim'
+"Plug  'scrooloose/nerdcommenter'
+Plug  'tpope/vim-commentary'
+Plug  'jwhitley/vim-matchit'
+"Plug  'tpope/vim-fireplace'
+" Plug  'guns/vim-clojure-static'
+Plug  'groenewege/vim-less'
+"Plug  'mattpap/vim-owl-tools'
+" Plug  'derekwyatt/vim-scala'
+"Plug  'digitaltoad/vim-jade'
+" Plug  'raymond-w-ko/vim-niji'
+Plug  'sjl/gundo.vim'
+Plug  'niklasl/vim-rdf'
+Plug 'Omer/vim-sparql'
+" Plug 'patrickmcelwee/sonicpi.vim'
+Plug 'othree/xml.vim'
+Plug 'vim-syntastic/syntastic'
+" Plug 'Shutnik/jshint2.vim'
+Plug 'reedes/vim-pencil'
+Plug 'jeroenp/vim-xquery-syntax'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+call plug#end()
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -77,16 +83,10 @@ nnoremap <leader>ll :ll<CR>
 " inoremap <C-j> <C-n>
 " inoremap <C-k> <C-p>
 
-call vundle#end()
-filetype on
-filetype indent on
-filetype plugin on
-
 imap jk <Esc>
 " Change mapleader from \ to ,
 " Remap comma function
 let mapleader=" "
-syntax on
 set tags+=gems.tags
 nnoremap K -J
 nnoremap <Leader>w :w<CR>
