@@ -26,7 +26,7 @@ Plug  'Townk/vim-autoclose'
 "Plug  'kchmck/vim-coffee-script'
 "Plug 'tpope/vim-haml'
 Plug  'altercation/vim-colors-solarized'
-Plug  'kien/ctrlp.vim'
+Plug  'ctrlpvim/ctrlp.vim'
 Plug  'benmills/vimux'
 " Plug  'mattn/emmet-vim'
 "Plug  'scrooloose/nerdcommenter'
@@ -123,7 +123,7 @@ nnoremap <Leader>b :CtrlPBuffer <CR>
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<c-f>'] }
 "exclude source and compiled files (put in target/ by scala)
-let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log|data)$'
+let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log|data|es|umd)$'
 "map <Leader>gdm :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/maps<CR>
 "map <Leader>gdr :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/resources<CR>
 "map <Leader>gds :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/sources<CR>
