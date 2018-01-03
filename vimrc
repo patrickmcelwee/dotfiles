@@ -34,24 +34,32 @@ Plug  'tpope/vim-commentary'
 Plug  'jwhitley/vim-matchit'
 "Plug  'tpope/vim-fireplace'
 " Plug  'guns/vim-clojure-static'
-Plug  'groenewege/vim-less'
+Plug  'groenewege/vim-less', {'for': 'less'}
 "Plug  'mattpap/vim-owl-tools'
 " Plug  'derekwyatt/vim-scala'
 "Plug  'digitaltoad/vim-jade'
 " Plug  'raymond-w-ko/vim-niji'
 Plug  'sjl/gundo.vim'
-Plug  'niklasl/vim-rdf'
-Plug 'Omer/vim-sparql'
+Plug  'niklasl/vim-rdf', {'for': ['turtle', 'trig', 'n3', 'jsonld', 'htmlrdfa']}
+Plug 'Omer/vim-sparql', {'for': 'sparql'}
 " Plug 'patrickmcelwee/sonicpi.vim'
 Plug 'othree/xml.vim'
 Plug 'vim-syntastic/syntastic'
 " Plug 'Shutnik/jshint2.vim'
-Plug 'reedes/vim-pencil'
-Plug 'jeroenp/vim-xquery-syntax'
-Plug 'leafgarland/typescript-vim'
+Plug 'reedes/vim-pencil', {'for': 'markdown'}
+Plug 'jeroenp/vim-xquery-syntax', {'for': 'xquery'}
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
+Plug 'posva/vim-vue', {'for': 'vue'}
+Plug 'ervandew/supertab'
 call plug#end()
+
+"Typescript autocompletion
+"This completion_detail=1 may make it slow, because pulls in arguments too
+let g:tsuquyomi_completion_detail = 1
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -65,8 +73,10 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_eslint_exec = "./node_modules/.bin/eslint"
 let g:syntastic_javascript_checkers = ["eslint"]
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:syntastic_html_tidy_ignore_errors=["proprietary attribute", "is not recognized!", "discarding unexpected"]
-let g:syntastic_ignore_files = ['node_modules/']
+let g:syntastic_ignore_files = ['node_modules/', 'dist/']
 let g:syntastic_mode_map = {
   \ "mode": "active",
   \ "passive_filetypes": ["html"] }
@@ -212,20 +222,6 @@ nnoremap <Leader>h :nohlsearch<cr>
 
 " Directory of current file with '%%'
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -390,6 +386,7 @@ nnoremap <Leader>pcrr :call VimuxRunCommand("(use 'our-first-game.core :reload) 
 au BufRead,BufNewFile {Capfile,Gemfile,Gemfile.lock,Rakefile,config.ru,} set ft=ruby
 au BufNewFile,BufRead *.gradle set ft=groovy
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufRead,BufNewFile {.eslintrc} set ft=json
 
 nnoremap <Leader>1 :set norelativenumber! nonumber!<CR>
 
