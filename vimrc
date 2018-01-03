@@ -239,20 +239,6 @@ function! RenameFile()
 endfunction
 nnoremap <leader>rn :call RenameFile()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EXTRACT METHOD
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! ExtractMethod()
-  normal! md
-  let method_name = input('Method name: ')
-  execute ":normal `da" . method_name
-  execute ":normal G?def\<cr>%o\<cr>def " . method_name
-  normal! oend
-  normal! O
-  normal! p==`d
-endfunction
-nnoremap <Leader>em vg_d:call ExtractMethod()<CR>
-vnoremap <leader>em d:call ExtractMethod()<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! OpenTestAlternate()

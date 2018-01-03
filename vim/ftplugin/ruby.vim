@@ -64,3 +64,17 @@ nnoremap <Leader>ms :call VimuxRunCommand("ruby -Itest -rminitest/pride " . bufn
 "Make this harder to do
 nnoremap <Leader>+lf :call VimuxRunCommand("load \'" . bufname("%") . "\'")<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EXTRACT METHOD Ruby
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ExtractMethod()
+  normal! md
+  let method_name = input('Method name: ')
+  execute ":normal `da" . method_name
+  execute ":normal G?def\<cr>%o\<cr>def " . method_name
+  normal! oend
+  normal! O
+  normal! p==`d
+endfunction
+nnoremap <Leader>em vg_d:call ExtractMethod()<CR>
+vnoremap <leader>em d:call ExtractMethod()<CR>
