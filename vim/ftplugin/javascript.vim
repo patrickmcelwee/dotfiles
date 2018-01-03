@@ -12,3 +12,8 @@ nmap <leader>jf i(function () {<CR><space><space>'use strict';<CR><CR>})();<esc>
 " Jasmine
 nmap <leader>ds idescribe('', () => {<CR>});<esc>lxk0f'a
 nmap <leader>it o<CR>it('', () => {<CR>});<esc>k0f'a
+
+" npm
+nnoremap <leader>nb :call VimuxRunCommand("npm run build")<CR>
+nnoremap <leader>nt :call VimuxRunCommand("npm test")<CR>
+nnoremap <leader>nw :call VimuxRunCommand("npm run test:watch")<CR>
