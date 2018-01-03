@@ -17,6 +17,7 @@ call plug#begin('~/.vim/bundle')
 Plug  'gmarik/Vundle.vim'
 " Plug  'tpope/vim-rails'
 Plug  'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb' " Github links
 "Plug 'scrooloose/nerdtree' # corrupting characters
 Plug  'tpope/vim-endwise'
 Plug  'tpope/vim-surround'
