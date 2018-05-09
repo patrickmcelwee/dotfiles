@@ -57,6 +57,8 @@ Plug 'posva/vim-vue', {'for': 'vue'}
 Plug 'ervandew/supertab'
 call plug#end()
 
+nnoremap gp mm:silent %!prettier --stdin all --single-quote<CR>`m
+
 "Typescript autocompletion
 "This completion_detail=1 may make it slow, because pulls in arguments too
 let g:tsuquyomi_completion_detail = 1
@@ -133,7 +135,7 @@ nnoremap <Leader>b :CtrlPBuffer <CR>
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<c-f>'] }
 "exclude source and compiled files (put in target/ by scala)
-let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log|data|es|umd)$'
+let g:ctrlp_custom_ignore = '\v/(\.git|\.build|target|out|classes|gen|log|data|es|umd|node_modules)$'
 "map <Leader>gdm :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/maps<CR>
 "map <Leader>gdr :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/resources<CR>
 "map <Leader>gds :CommandTFlush<CR>\|:CommandT lib/duke_vivo_mapper/sources<CR>
