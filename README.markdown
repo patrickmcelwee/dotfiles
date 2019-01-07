@@ -1,4 +1,4 @@
-This currently has my bash, tmux and some script files. Need to add: vim config file.
+This currently has my vim, bash, tmux and some script files. For anyone else looking at this, sorry that it doesn't get cleaned up very often! But it works for me.
 
 To install:
 
