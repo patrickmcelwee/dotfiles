@@ -57,8 +57,6 @@ Plug 'posva/vim-vue', {'for': 'vue'}
 Plug 'ervandew/supertab'
 call plug#end()
 
-nnoremap gp mm:silent %!prettier --stdin all --single-quote<CR>`m
-
 "Typescript autocompletion
 "This completion_detail=1 may make it slow, because pulls in arguments too
 let g:tsuquyomi_completion_detail = 1
@@ -400,3 +398,9 @@ augroup pencil
   autocmd FileType text         call pencil#init()
 augroup END
 let g:markdown_fenced_languages = ['html', 'xml', 'javascript', 'xquery', 'python', 'ruby', 'bash=sh']
+
+" npm
+nnoremap <leader>nb :call VimuxRunCommand("npm run build")<CR>
+nnoremap <leader>nt :call VimuxRunCommand("npm test")<CR>
+nnoremap <leader>nw :call VimuxRunCommand("npm run test:watch")<CR>
+
