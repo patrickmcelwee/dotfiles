@@ -46,7 +46,7 @@ Plug 'Omer/vim-sparql', {'for': 'sparql'}
 Plug 'othree/xml.vim'
 Plug 'vim-syntastic/syntastic'
 " Plug 'Shutnik/jshint2.vim'
-Plug 'reedes/vim-pencil', {'for': 'markdown'}
+Plug 'reedes/vim-pencil', {'for': ['markdown', 'text']}
 Plug 'jeroenp/vim-xquery-syntax', {'for': 'xquery'}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'pangloss/vim-javascript'
