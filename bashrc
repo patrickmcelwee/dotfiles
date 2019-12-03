@@ -60,7 +60,7 @@ vim()
 }
 
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/bin
-export TERM=screen-256color
+# export TERM=screen-256color
  
 export PATH=$PATH:/usr/local/mysql/bin
 

@@ -124,7 +124,9 @@ function! YankToClipboard(type, ...)
   let &selection = sel_save
 endfunction
 
+syntax enable
 set background=dark
+let g:solarized_termcolors=256
 colorscheme solarized
 
 " Ctrl-P
