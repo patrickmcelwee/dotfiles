@@ -32,6 +32,8 @@ alias postgres='postgres -D /usr/local/var/postgres'
 
 alias g='git'
 
+alias fixctrl='/mnt/c/Program\ Files/AutoHotkey/AutoHotkey.exe "C:\Users\pmcel\Sew Liberated Dropbox\Patrick McElwee\Patrick\personal\dev\tools\AutoHotKey\fix-ctrl.ahk" &'
+
 if [ -d /usr/local/Cellar/macvim ]; then
   export EDITOR='/usr/local/Cellar/macvim/*/MacVim.app/Contents/MacOS/Vim'
 else
