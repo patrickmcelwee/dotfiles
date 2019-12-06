@@ -6,17 +6,6 @@ export XMLSH=/usr/local/xmlsh
 export XMODPATH=/usr/local/xmlsh/ext
 export PATH=$PATH:$XMLSH/unix
 
-export NVM_DIR=~/.nvm
-
-if hash brew 2>/dev/null; then
-  if [ -f $(brew --prefix nvm)/nvm.sh ]; then
-    source $(brew --prefix nvm)/nvm.sh
-  fi
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
-fi
-
 alias usenewdocker="unset DOCKER_TLS_VERIFY; unset DOCKER_CERT_PATH; unset DOCKER_MACHINE_NAME; unset DOCKER_HOST"
 
 # http://stackoverflow.com/questions/9457233/unlimited-bash-history
@@ -86,3 +75,7 @@ if [ ! -n "$SSH_CLIENT" ]; then
   export PS1='\W \u$ '
 fi
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
