@@ -2,3 +2,4 @@ vim/bundle/
 tmux/resurrect/
 tmux/plugins/
 vim/.netrwhist
+tmux*.log
