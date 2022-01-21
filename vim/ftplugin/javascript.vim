@@ -13,5 +13,4 @@ nmap <leader>jf i(function () {<CR><space><space>'use strict';<CR><CR>})();<esc>
 nmap <leader>ds idescribe('', () => {<CR>});<esc>lxk0f'a
 nmap <leader>it o<CR>it('', () => {<CR>});<esc>k0f'a
 
-nnoremap gp mm :silent %!./node_modules/.bin/prettier --stdin all --stdin-filepath %<CR>`m
-
+nnoremap gp mm :silent %!./node_modules/.bin/prettier --stdin-filepath %<CR>`m

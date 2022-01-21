@@ -1,5 +1,5 @@
 [user]
-  name = Patrick McElwee
+	name = Patrick McElwee
 	email = pmcelwee@gmail.com
 [color]
   branch = auto
@@ -36,3 +36,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[credential]
+	helper = cache
